@@ -1,0 +1,70 @@
+.timeblock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .hour {
+    flex: 0 0 10%;
+    text-align: center;
+    padding: 10px;
+    background-color: #d3d3d3;
+    border: 1px solid #ccc;
+  }
+  
+  .description {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  .lead{
+    text-align: center;
+    font-size: 2rem;
+  }
+  .past {
+    background-color: #f0f0f0;
+  }
+  
+  .present {
+    background-color: #ff6961;
+  }
+  
+  .future {
+    background-color: #77dd77;
+  }
+  
+  .saveBtn {
+    flex: 0 0 8%;
+    text-align: center;
+    padding: 10px;
+    background-color: #06aed5;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .saveBtn:hover {
+    background-color: #045d8d;
+  }
+
+  .deleteBtn {
+    flex: 0 0 5%;
+    text-align: center;
+    padding: 10px;
+    background-color: #ff4c4c;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #c0392b;
+  }
+  
+  .display-4{
+    text-align:center;
+    font-weight: bolder;
+    font-size: 2.5rem;
+  }
+  

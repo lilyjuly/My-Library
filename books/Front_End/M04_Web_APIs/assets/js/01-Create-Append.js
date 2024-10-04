@@ -40,7 +40,7 @@ listEl.appendChild(li4);
 
 h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
 infoEl.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-imgEl.setAttribute("src", "http://placekitten.com/200/300");
+imgEl.setAttribute("src", "");
 nameEl.setAttribute("style", "font-size:25px; text-align:center;");
 kittenEl.setAttribute("style", "font-size:25px; text-align:center;");
 favoriteEl.setAttribute("style", "font-size:20px;");
