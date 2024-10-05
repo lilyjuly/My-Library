@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz with Timer</title>
+    <link rel="stylesheet" href="../Quiz/css/style.css" />
+  </head>
+  <body>
+    <div id="start-container">
+      <h2>Welcome to the Quiz!</h2>
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter your name"
+        onfocus="clearPlaceholder(this)"
+      />
+      <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <div class="quiz-container" id="quiz-container" style="display: none">
+      <div id="timer">Time Left: <span id="time">36</span> seconds</div>
+      <div id="question"></div>
+      <div class="options"></div>
+      <button id="next-question" onclick="checkAnswer()">Submit</button>
+      <div id="feedback"></div>
+    </div>
+
+    <div id="result-container" style="display: none">
+      <h2>Quiz Result</h2>
+      <div id="result"></div>
+      <button id="test-again" onclick="testAgain()">Test Again</button>
+    </div>
+
+    <!-- Store questions in a script tag with type="application/json" -->
+  <script id="questions-data" type="application/json">
+    [
+    {
+        "question": "Which method is commonly used to make requests to third-party APIs in JavaScript?",
+        "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "All of the above"
+        ],
+        "answer": "All of the above"
+    },
+    {
+        "question": "What does JSON stand for, often used in responses from third-party APIs?",
+        "options": [
+            "JavaScript Object Notation",
+            "JavaScript Online Notation",
+            "JavaScript Operational Notation",
+            "JavaScript Open Notation"
+        ],
+        "answer": "JavaScript Object Notation"
+    },
+    {
+        "question": "Which HTTP status code indicates a successful request when using a third-party API?",
+        "options": [
+            "200",
+            "404",
+            "500",
+            "401"
+        ],
+        "answer": "200"
+    }
+]
+  </script>
+    <script src="/books/Front_End/M06_Server_Side_APIs/Quiz/js/quiz-1.js"></script>
+  </body>
+</html>

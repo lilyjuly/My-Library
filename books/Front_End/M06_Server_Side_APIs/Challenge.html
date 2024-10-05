@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>လက်ရှိ နှင့် နောက် ၂ရက် မိုးလေဝသ အခြေအနေ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F0F8FF;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .weather {
+            display: inline-block;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .weather p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .weather img {
+            width: 100px;
+            height: 100px;
+        }
+        #cityInput {
+            padding: 10px;
+            width: 300px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056B3;
+        }
+    </style>
+</head>
+<body>
+    <h1>လက်ရှိ နှင့် နောက် ၂ရက် မိုးလေဝသ အခြေအနေ</h1>
+    <input type="text" id="cityInput" placeholder="မြို့နာမည်ထည့်ပါ" />
+    <button onclick="fetchWeather()">မိုးလေဝသ ရယူမည်</button>
+    <div id="weatherInfo" style="display: none;">
+        <!-- မိုးလေဝသ မိနစ်တိုင်းအတွက် နေရာ -->
+    </div>
+    <script>
+        const apiKey ='dfe9597a5f03712d63c18c5b39259332'; // OpenWeather API Key ထည့်ပါ
+        function fetchWeather() {
+            const city = document.getElementById('cityInput').value || 'Yangon';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}&lang=my`;
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // data ထဲက အချက်အလက်ကို ကြည့်ရှုနိုင်ပါတယ်
+                    const weatherInfoDiv = document.getElementById('weatherInfo');
+                    weatherInfoDiv.innerHTML = ''; // ရှိပြီးသားအချက်အလက်များကိုရှင်းလင်း
+                    // ၃ရက်အတွက် မိုးလေဝသကို ဖော်ပြရန်
+                    for (let i = 0; i < 3; i++) {
+                        const weatherData = data.list[i * 8]; // 8 ချိန်ကာလ = ၁ရက်
+                        const date = new Date(weatherData.dt_txt).toLocaleDateString('my-MM', {
+                            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                        });
+                        const weatherHTML = `
+                            <div class="weather">
+                                <h2>${data.city.name}, ${data.city.country} (${date})</h2>
+                                <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="Weather Icon" />
+                                <p>အပူချိန်: ${weatherData.main.temp}°C</p>
+                                <p>အခြေအနေ: ${weatherData.weather[0].description}</p>
+                                <p>လေတိုက်နှုန်း: ${weatherData.wind.speed} m/s</p>
+                                <p>စိုထိုင်းဆ: ${weatherData.main.humidity}%</p>
+                            </div>
+                        `;
+                        weatherInfoDiv.innerHTML += weatherHTML;
+                    }
+                    weatherInfoDiv.style.display = 'block';
+                })
+                .catch(error => {
+                    alert('အမှားဖြစ်နေပါသည်၊ မြို့နာမည်ကို ပြန်စစ်ပါ');
+                    console.error('Error fetching weather data:', error);
+                });
+        }
+    </script>
+</body>
+</html>
