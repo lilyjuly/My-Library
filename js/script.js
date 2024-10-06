@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "02-odd-or-even.html",
         "03-log-nums.html",
         "05-Module-Projects-3.5.html",
-        "10-Recordings.html",
-        "11-Quiz.html",
+        "10-quiz-all.html",
       ],
       M04_Web_APIs: [
         "01-Create-Append.html",
